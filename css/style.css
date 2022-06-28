@@ -1,50 +1,412 @@
-@import url("photographer.css");
+/**    variables  ***/
+:root {
+    --primary: #901C1C;
+    --red: #D3573C;
+    --secondary: #DB8876;
+    --gris: #525252;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: "DM Sans", sans-serif;
-    margin: 0;
+    font-size: 16px;
 }
 
+/* entete */
 
 header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 90px;
+    height: 5.625em;
 }
 
 h1 {
-    color: #901C1C;
-    margin-right: 100px;
+    color: var(--primary);
+    margin-right: 2.25em;
+    font-weight: 400;
+    margin-top: 3px;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+    width: 9.6875em;
+    height: 3.125em;
+    margin-left: 6.25em;
+    padding-bottom: 5px;
+    border-bottom: 3px solid white;
 }
 
-.photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.logo:hover,
+.logo:active {
+    border-bottom: 3px solid var(--primary);
+}
+
+.hide {
+    display: none;
+}
+
+/***********  SECTION PAGE  ACCUEIL     ***********/
+
+.photographer-section {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     gap: 70px;
     margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
-.photographer_section article {
-    justify-self: center;
+
+.photographer-section article {
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photographer-section article a {
+    text-decoration: none;
     display: flex;
+    justify-self: center;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
+
 }
 
-.photographer_section article h2 {
+.photographer-portrait {
+    height: 13em;
+    width: 13em;
+    transform: scale(1);
+    transition-duration: 300ms;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 5px 10px 1px rgba(201, 197, 197, 0.50);
+    align-self: center;
+}
+
+.photographer-section article a h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 2.25em;
+    margin-bottom: 0;
+    font-weight: 400;
+    transition-duration: 200ms;
+    text-align: center;
 }
 
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
+.photographer-section article a:hover h2 {
+    color: var(--red);
+    font-size: 2em;
+    font-weight: 400;
+    transition-duration: 200ms;
+    text-align: center;
+
+}
+
+.photographer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+}
+
+.photographer-place {
+    text-align: center;
+    color: var(--primary);
+    font-size: 0.813em;
+    line-height: 16.93px;
+}
+
+.tagline {
+    font-size: 0.625em;
+    line-height: 11.72px;
+    font-weight: 400;
+}
+
+.price {
+    font-size: 0.563em;
+    line-height: 11.72px;
+    font-weight: 400;
+    color: var(--gris);
+}
+
+
+/**************     SECTION HEADER  one photograph    *****/
+
+.photograph-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FAFAFA;
+    width: 90%;
+    height: 18.75em;
+    margin: auto;
+
+}
+
+.photograph-header a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.photograph-header h1 {
+    color: #d3573c;
+    font-size: 3em;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.content-photograph {
+    display: block;
+    color: var(--primary);
+    font-size: 2em;
+    font-weight: 400;
+}
+
+.photograph-header img {
+    height: 12.5em;
+    /* 200px  */
+    width: 12.5em;
+    border-radius: 50%;
+    background: #C4C4C4;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    margin-top: -17%;
+    margin-right: 4%;
+    object-fit: cover;
+}
+
+.photograph-header article {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.25em;
+    padding-bottom: 1.25em;
+    width: 90%;
+    margin: auto;
+}
+
+.photograph-header div p {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 0px;
+    color: var(--primary);
+    margin-top: 7%;
+}
+
+.photograph-header h1 {
+    font-size: 64px;
+    color: #d3573c;
+    font-weight: 400;
+}
+
+.photograph-header p.tagline {
+    color: black;
+    padding-top: 1.25em;
+    font-size: 1.25em;
+}
+
+.photograph-header .modal-btn {
+    align-self: center;
+}
+
+.modal-btn:hover {
+    color: #312e2e;
+    background: #d3573c;
+}
+
+
+/**************************    BREAKPOINTS   ********/
+
+
+@media only screen and (max-width : 1289px) {
+    .photographer-section {
+        margin: 6.25em 3.75em;
+    }
+
+}
+
+/***********************   TABLETS LANDSCAPE   *********/
+
+@media only screen and (max-width : 1024px) {
+
+    .photographer-section {
+        width: 90%;
+        justify-content: space-around;
+        margin: 2%;
+        gap: 2%;
+    }
+
+
+    /*********   TABLETS PORTRAIT   *************/
+
+    @media only screen and (max-width : 768px) {}
+
+    h1 {
+        align-content: center;
+        margin-bottom: 1.25em;
+        margin-top: 1.25em;
+    }
+
+    .close-modal {
+        font-size: 2em;
+        top: 2.5em;
+    }
+
+    #nameModal {
+        font-size: 2em;
+        margin-top: 1em;
+    }
+
+    .modal {
+        height: 45em;
+    }
+
+    .close-modal {
+        font-size: 1em;
+    }
+
+    .photographer-section article img {
+        margin-top: 3.125em;
+    }
+
+    .photographer-section article .tagline {
+        font-size: 10px;
+        font-weight: 400;
+    }
+
+    .photographer-section article .price {
+        font-size: 9px;
+        color: #757575;
+        font-weight: 400;
+    }
+
+    .photograph-header h1 {
+        font-size: 40px;
+    }
+
+    .photograph-header div p {
+        line-height: 25px;
+    }
+
+    .secondaryerLikes-section {
+        width: 17em;
+        height: 3.5em;
+        font-size: 1.1em;
+    }
+}
+
+/****************  SMARTPHONE  ****************/
+
+@media only screen and (max-width : 480px) {
+    .photograph-header .article {
+        flex-direction: column;
+    }
+
+    .photographer-section {
+        flex-direction: column;
+        align-content: center;
+        width: 100%;
+        gap: 0;
+    }
+
+    h1 {
+        margin-left: 23%;
+    }
+
+    .logo {
+        margin-left: 90%;
+    }
+
+    header {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .lightbox__close,
+    .lightbox__next,
+    .lightbox__prev {
+        width: 1.2em;
+    }
+
+    .lightbox button {
+        right: 12%;
+    }
+
+
+    #nameModal {
+        font-size: 2em;
+        margin-top: 1em;
+    }
+
+    .modal {
+        height: 35em;
+        width: 17em;
+    }
+
+    .modal h1 {
+        font-size: 1.8em;
+        text-align: left;
+        margin: inherit;
+    }
+}
+
+@media only screen and (max-width : 425px) {
+
+    main {
+        padding-top: 10%;
+    }
+
+    .photograph-header article {
+        flex-direction: column;
+    }
+
+    .photograph-header h1 {
+        font-size: 22px;
+    }
+
+    .photograph-header .tagline {
+        display: none;
+        width: 100%
+    }
+
+    .photograph-header a {
+        display: flex;
+        order: 5;
+    }
+
+    .photograph-header img {
+        height: 6em;
+        width: 6em;
+    }
+
+    .secondaryerLikes-section {
+        width: 50%;
+        height: 3%
+    }
+
+    .secondaryerLikes-section {
+        width: 13em;
+        height: 3em;
+        font-size: 0.8em;
+    }
+
+    #sort-choice {
+        margin-left: 4em;
+        border: none;
+    }
+
+    .sort-form {
+        max-width: 89%;
+        margin: 0em 1em;
+        padding-top: 15%;
+    }
 }

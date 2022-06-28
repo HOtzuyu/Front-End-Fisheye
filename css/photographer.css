@@ -1,76 +1,324 @@
-#contact_modal {
-    display: none;
-}
-
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
-}
-
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
+  /**********************  SECTION  gallery  **********/
+  .gallery-section {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 3%;
+    justify-content: space-around;
+    margin: 10px;
+  }
+  
+  .gallery-section article {
     display: flex;
     flex-direction: column;
+    margin-bottom: 2%;
+  }
+  
+  figure {
+    margin: 0px;
+    width: 100%
+  }
+  
+  figcaption {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
-}
-
-.modal header {
-    justify-content: space-between;
-    width: 100%;
-}
-
-.modal header img {
+    color: var(--lobusc);
+  }
+  
+  figcaption h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 14rem;
+  }
+  
+  /***  reprise maquette */
+  .gallery-section img {
+    height: 18rem;
+    width: 21rem;
+    object-fit: cover;
+    border-radius: 5px;
+    transform: translateY(0px) scale(1);
+    transition: all 0.25s ease;
+    box-shadow: 0 3px 3px rgb(0 0 0 / 10%);
+    object-position: 50% 17%;
+  }
+  
+  
+  .gallery-section img:hover {
+    box-shadow: 0 3px 3px rgb(0 0 0 / 10%);
+    transform: translateY(0px) scale(1);
+    transition: all 0.25s ease;
+  }
+  
+  .numberLike::after {
+    padding-left: 10px;
+    font-size: 1.375rem;
+  }
+  
+  #clicHeart {
+    padding-top: 8px;
+    font-size: 1.5rem;
+    margin-right: -15%;
+  }
+  
+  
+  /*************** SORTER   FILTER  
+  ******************************************/
+  .sorter {
+    position: relative;
+  }
+  
+  #sort-choice {
+    border-radius: 5px;
+    margin-bottom: 2.1875rem;
+    margin-left: -2.5rem;
+    border: none;
+  }
+  
+  /* trier par + liste deroulante */
+  .sort-form {
+    display: flex;
+    flex-direction: row;
+    max-width: 89%;
+    margin: 0rem 4.25rem;
+    padding-top: 4%;
+  }
+  
+  .sort-form label {
+    font-weight: 700;
+    font-size: 1.125rem;
+    max-width: 6.25rem;
+    height: 23px;
+    padding-left: 5px;
+    font-size: 1.125rem;
+    /*  18px  */
+    margin-right: 7%;
+  }
+  
+  .sort-form select {
+    background-color: var(--lobusc);
+    color: white;
+    padding: 2px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    font-weight: 500;
+    line-height: 20px;
+    font-size: 1.3rem;
     cursor: pointer;
-}
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-}
-
-form {
+    max-width: 10.625rem;
+  }
+  
+  option[disabled] {
+    color: #c9c9c9;
+  }
+  
+  /************************  MODAL FORMULAIRE    
+  ***************************************************/
+  
+  *::before,
+  ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* bouton contactez moi */
+  .modal-btn {
+    padding: 10px 14px;
+    font-size: 18px;
+    margin: 6.25rem auto;
+    /*  100px */
     display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-form label {
-    color: #312E2E;
-    font-size: 36px;
-}
-
-form div {
+    justify-content: center;
+    align-items: center;
+    max-width: 9.375rem;
+    /*  150px */
+    cursor: pointer;
+    height: 69px;
+    background-color: var(--lobusc);
+    color: white;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .md-container {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: visibility 0.4s;
+  }
+  
+  .md-container.active {
+    visibility: visible;
+  }
+  
+  .md-container.active {
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+  }
+  
+  .modal {
+    opacity: 0;
+    max-width: 27rem;
+    height: 50rem;
+    padding: 0rem 2.2rem 1.8rem 2.2rem;
+    background-color: var(--bann);
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% - 50px));
+    transition: opacity 0.3s ease-out,
+      transform 0.4s ease-out;
+  }
+  
+  /****** transition ********/
+  .md-container.active .modal {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.4s 0.2s ease-out,
+      transform 0.4s 0.2s ease-out;
+  }
+  
+  /******* croix de fermeture de la modal formulaire   ********/
+  .close-modal {
+    padding: 8px 10px;
+    border: none;
+    position: absolute;
+    top: 2.5rem;
+    right: 25px;
+    cursor: pointer;
+    background-color: var(--bann);
+    color: #fff;
+  }
+  
+  .modal label {
     display: flex;
-    flex-direction: column;
+    margin-bottom: 5px;
+    font-weight: 400;
+    border-radius: 5px;
+    font-size: 1.2rem;
+  }
+  
+  .modal h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    margin-top: 3rem;
+    margin-bottom: 0px;
+    color: black;
+  }
+  
+  /*  interieur de l input & textarea */
+  .text-control {
+    font-size: 1.8rem;
+  }
+  
+  #message {
+    font-size: 1.8rem;
+  }
+  
+  /*   entre input    */
+  .modal input {
     width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-}
-
-form input {
+    height: 2.2rem;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  .modal input:focus {
+    outline-style: solid;
+    border: 1px solid rgb(231, 100, 177);
+  }
+  
+  .modal textarea {
     width: 100%;
-    height: 68px;
+    height: 6rem;
+    border-radius: 5px;
+  }
+  
+  .modal textarea:focus {
+    outline-style: solid;
+    border: 1px solid rgb(231, 100, 177);
+  }
+  
+  #nameModal {
+    font-size: 4rem;
+    /* 64px*/
+    font-weight: 400;
+    margin-bottom: 10px;
+    margin-top: 1.25rem;
+    /*  20px  */
+  }
+  
+  .modal.h2 {
+    font-size: 4rem;
+    font-weight: 400;
+    margin-top: 1.25rem;
+    margin-bottom: 0px;
+  }
+  
+  .contact_button {
+    background-color: var(--lobusc);
+    width: 10.625rem;
+    height: 4.31rem;
     border: none;
     border-radius: 5px;
-}
+    font-size: 1.125rem;
+    /* 18px*/
+    color: white;
+    font-weight: 700;
+    align-items: center;
+    margin-top: 1rem;
+    /* 23px*/
+  }
+  
+  /*-------   LIKES   ------- */
+  
+  .numberLike::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f004";
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+  
+  figcaption span {
+    align-content: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  
+  
+  /***************   ENCART  *************/
+  
+  .bannerLikes-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--bann);
+    width: 23rem;
+    height: 4.5rem;
+    position: fixed;
+    z-index: 1;
+    border-radius: 5px;
+    bottom: 0;
+    right: 0%;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
+  #totalLike::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f004";
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding-left: 5px;
+  }
+  
+  .allLike {
+    margin-right: 10px;
+  }
