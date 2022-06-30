@@ -141,7 +141,7 @@ h1 {
 
 /**************     SECTION HEADER  one photograph    *****/
 
-.photograph-header {
+.photographer-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -153,12 +153,12 @@ h1 {
 
 }
 
-.photograph-header a {
+.photographer-header a {
     text-decoration: none;
     cursor: pointer;
 }
 
-.photograph-header h1 {
+.photographer-header h1 {
     color: #d3573c;
     font-size: 3em;
     font-weight: 400;
@@ -172,7 +172,7 @@ h1 {
     font-weight: 400;
 }
 
-.photograph-header img {
+.photographer-header img {
     height: 12.5em;
     /* 200px  */
     width: 12.5em;
@@ -184,7 +184,7 @@ h1 {
     object-fit: cover;
 }
 
-.photograph-header article {
+.photographer-header article {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -194,7 +194,7 @@ h1 {
     margin: auto;
 }
 
-.photograph-header div p {
+.photographer-header div p {
     font-weight: 400;
     font-size: 40px;
     line-height: 0px;
@@ -202,19 +202,19 @@ h1 {
     margin-top: 7%;
 }
 
-.photograph-header h1 {
+.photographer-header h1 {
     font-size: 64px;
     color: #d3573c;
     font-weight: 400;
 }
 
-.photograph-header p.tagline {
+.photographer-header p.tagline {
     color: black;
     padding-top: 1.25em;
     font-size: 1.25em;
 }
 
-.photograph-header .modal-btn {
+.photographer-header .modal-btn {
     align-self: center;
 }
 

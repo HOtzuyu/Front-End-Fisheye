@@ -11,22 +11,21 @@ async function getPhotographers() {
               return response.json();
           })
           .then((data) => { // recupere les donnees du fichier
-              console.log(data);
+              //console.log(data);
               return data.photographers;
           })
           .catch((err) => console.log("an error", err))
   );
 }
-
 async function displayData() {
   
   const photographers = await getPhotographers();
 
-  const photographersSection = document.querySelector(".photograph-header");
+  const photographersHeader = document.querySelector(".photographer-header");
   photographers.forEach((photographer) => {
       const photographerModel = headerFactory(photographer);
       const userCardDOM = photographerModel.getHeaderCardDOM();
-      photographersSection.appendChild(userCardDOM);
+      photographersHeader.appendChild(userCardDOM);
   });
 }
 displayData();// recuperation des photographers
