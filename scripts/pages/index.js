@@ -1,28 +1,16 @@
-/* eslint-disable no-undef */
-async function getPhotographers() {
-    return (
-        fetch("./data/photographers.json")
-            .then(function (response) {
-               // console.log(response);
-                return response.json();
-            })
-            .then((data) => { // recupere les donnees du fichier
-                //console.log(data);
-                return data.photographers;
-            })
-            .catch((err) => console.log("an error", err))
-    );
-}
-
-async function displayData() {
-    
-    const photographers = await getPhotographers();
-
-    const photographersSection = document.querySelector(".photographer-section");
+  async function displayData(photographers) {
+    const photographerSection = document.querySelector(".photographer_section");
+    photographerSection.innerHTML = "";
     photographers.forEach((photographer) => {
-        const photographerModel = indexFactory(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
+      const photographerModel = new Photographer(photographer);
+      photographerSection.innerHTML += photographerModel.renderUser();
     });
-}
-displayData();// recuperation des photographers
+  }
+  
+  async function init() {
+    // Récupère les datas des photographes
+    const { photographers } = await getPhotographers();
+    displayData(photographers);
+  }
+  
+  init();

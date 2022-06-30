@@ -15,29 +15,37 @@
 
   </header>
   <main id="main">
-    <div class="photographer-header">
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-    </div>
-    <!-- SECTION GALLERY -->
-    <section class="gallery-section"></section>
+    <!-- User Header -->
+    <section class="photograph-header"></section>
+
+    <!-- Filter Form -->
+    <div class="filter"></div>
+
+    <!-- Media Gallery -->
+    <section id="section-media"></section>
+
+    <!-- Lightbox -->
+    <div role="dialog" class="lightbox" aria-label="Vue rapprochée du média"></div>
+
+    <!-- User Footer -->
+    <section id="sticky-footer"></section>
+
+    <!-- Contact Modal -->
+    <div id="contact_modal" class="contact-modal" role="dialog"></div>
   </main>
-  <!-- <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div> -->
+
+  <!-- Call API -->
+  <script src="/scripts/api/Api.js"></script>
+
+  <!-- Factory -->
+  <script src="/scripts/factories/fact_index.js"></script>
   <script src="/scripts/factories/fact_photographer.js"></script>
+  <script src="/scripts/factories/fact_media.js"></script>
+
+  <!-- Constructor -->
   <script src="/scripts/pages/photographer.js"></script>
+
+  <!-- Utils -->
   <script src="/scripts/utils/contactForm.js"></script>
 </body>
 

@@ -1,37 +1,53 @@
-function indexFactory(data) {
-  const {
-    name,
-    portrait,
-    city,
-    country,
-    price,
-    tagline,
-    id
-  } = data;
-
-  const image = `assets/photographers/${portrait}`;
-
-  /*************    elements du DOM Accueil     *****/
-
-  function getUserCardDOM() {
-    const article = document.createElement("article");
-    const linkURL = "photographer.html";
-    const url = `${linkURL}?id=${id}`;
-    article.innerHTML = `
-          <a href=${url} aria-label="lien vers la page personnel de ${name}">
-            <img class="photographer-portrait" src="${image}" alt="portrait ${name}">
-            <h2 aria-label="nom du photographe ${name}">${name}</h2>
-          </a>
-          <div class="photographer-content">
-            <h3 class="photographer-place">${country}/${city} </h3>
-            <p class="tagline">${tagline}</p>
-            <p class="price">${price}€/jour</p>
-          </div>`;
-    return article;
+class Photographer {
+  constructor(photographer) {
+    this._name = photographer.name;
+    this._id = photographer.id;
+    this._city = photographer.city;
+    this._country = photographer.country;
+    this._tagline = photographer.tagline;
+    this._price = photographer.price;
+    this._picture = photographer.portrait;
   }
-  return {
-    name,
-    image,
-    getUserCardDOM
-  };
+
+  get picture() {
+    return `../assets/photographers/${this._picture}`;
+  }
+
+  get localisation() {
+    return `${this._city}, ${this._country}`;
+  }
+
+  get price() {
+    return `${this._price}€/jour`;
+  }
+
+  renderUser() {
+    return `
+        <div class="photographer-wrapper">
+          <a href="photographer.html?id=${this._id}" aria-label="Page de ${this._name}">
+              <article class="photographer-profile">
+                  <img src="${this.picture}" alt="Photo de profil du photographe ${this._name}">
+                  <h2>${this._name}</h2>
+              </article>
+          </a>
+          <div class="photographer-infos">
+              <p class="photographer-city">${this.localisation}</p>
+              <p class="photographer-tagline">${this._tagline}</p>
+              <p class="photographer-price">${this.price}</p>
+          </div>
+        </div>
+        `;
+  }
+
+  renderHeader() {
+    return `
+        <div class="photograph-header-info">
+            <h1 class="photograph-header-title">${this._name}</h1>
+            <h2 class="photographer-header-city">${this.localisation}</h2>
+            <p class="photographer-header-tagline">${this._tagline}</p>
+        </div>
+        <button class="contact_button" aria-label="Contactez-moi">Contactez-moi</button>
+        <img src="${this.picture}" alt="Photo de profil de ${this._name}"/>
+        `;
+  }
 }

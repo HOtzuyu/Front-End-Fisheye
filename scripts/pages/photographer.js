@@ -1,31 +1,22 @@
-const request = new URLSearchParams(location.search);
-console.log(request);
-const photographerId = request.get("id");
-console.log(photographerId);
+const $photographerHeader = document.querySelector(".photograph-header");
+const $photographerFooter = document.querySelector("#sticky-footer");
+const $sectionMedia = document.querySelector("#section-media");
 
-async function getPhotographers() {
-  return (
-      fetch("./data/photographers.json")
-          .then(function (response) {
-             console.log(response);
-              return response.json();
-          })
-          .then((data) => { // recupere les donnees du fichier
-              //console.log(data);
-              return data.photographers;
-          })
-          .catch((err) => console.log("an error", err))
+async function displayPhotographersPage() {
+  const { photographers, media } = await getPhotographers();
+  const params = new URLSearchParams(document.location.search);
+  const photographId = params.get("id");
+  const selectedPhotographer = photographers.find(
+    (photographer) => photographer.id == photographId
   );
-}
-async function displayData() {
-  
-  const photographers = await getPhotographers();
 
-  const photographersHeader = document.querySelector(".photographer-header");
-  photographers.forEach((photographer) => {
-      const photographerModel = headerFactory(photographer);
-      const userCardDOM = photographerModel.getHeaderCardDOM();
-      photographersHeader.appendChild(userCardDOM);
-  });
+  // Header based on selected photographer's id
+  let userHeader = new Photographer(selectedPhotographer);
+  $photographerHeader.innerHTML += userHeader.renderHeader();
 }
-displayData();// recuperation des photographers
+
+async function init() {
+  await displayPhotographersPage();
+}
+
+init();
