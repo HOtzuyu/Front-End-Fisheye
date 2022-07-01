@@ -8,13 +8,15 @@ ul {
 
 /* Header on page photographer */
 .photograph-header {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     justify-content: center;
     align-items: center;
     background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 2.4rem;
+    height: 313px;
+    width: 90%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .photograph-header > * {
@@ -68,4 +70,55 @@ ul {
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+/* SECTION MEDIA ON PHOTOGRAPHER PAGE */
+
+#section-media{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+
+
+}
+.gallery-wrapper{
+    width: 90%;
+    justify-self: center;
+}
+.card-image{
+    width: 100%;
+    min-width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+
+}
+
+.gallery-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #901C1C;
+}
+
+..gallery-footer>*{
+    line-height: 31.25px;
+}
+
+.gallery-footer-title{
+    font-size: 1.5em;
+}
+
+.gallery-footer-like{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-weight: 500;
+}
+
+.heart{
+    margin-left: 5px;
 }
