@@ -87,7 +87,7 @@ class Video extends Media {
           <div class="gallery-wrapper">
               <a class="gallery-card" aria-label="Ouvrir la vue rapprochée de ${this._title}">
                 <div class="gallery-item">
-                    <video class="card-image" controls="controls" preload="metadata">
+                    <video class="card-image" controls="controls" preload="metadata"  playsinline id="player">
                      <source src="/assets/galleryPhoto/${this._photographerId}/${this._video}" type="video/mp4">
                     </video>                  
                 </div>
@@ -104,4 +104,5 @@ class Video extends Media {
           </div>
           `;
     }
+    
 }

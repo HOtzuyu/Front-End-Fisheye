@@ -8,6 +8,7 @@ async function displayPhotographersPage() {
     media
   } = await getPhotographers();
   const params = new URLSearchParams(document.location.search);
+  //console.log(params);
   const photographId = params.get("id");
   const selectedPhotographer = photographers.find(
     (photographer) => photographer.id == photographId
@@ -23,10 +24,18 @@ async function displayPhotographersPage() {
   );
 
   mediaGallery.forEach((media) => {
-    console.log(media);
+    //console.log(media);
     const allMedias = new MediaFactory(media);
     $sectionMedia.innerHTML += allMedias.renderMedia();
   });
+
+// Filtered Gallery
+const FilteredGallery = new FilterForm(mediaGallery);
+FilteredGallery.render();
+
+  // Contact Modal
+  let contactModal = new ContactForm(selectedPhotographer);
+  contactModal.render();
 }
 
 async function init() {

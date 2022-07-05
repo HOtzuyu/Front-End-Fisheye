@@ -8,7 +8,7 @@
   <meta name="title" content="Page d'accueil du site Fisheye" />
   <meta name="description" content="Site pour photographes indépendants." />
   <title>Fisheye</title>
-
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <link rel="icon" type="image/png" href="assets/gallery/favicon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -37,7 +37,7 @@
     <section id="sticky-footer"></section>
 
     <!-- Contact Modal -->
-    <div id="contact_modal" class="contact-modal" role="dialog"></div>
+    <div id="contact_modal" class="contact-modal bground" role="dialog"></div>
   </main>
 
   <!-- Call API -->
@@ -45,17 +45,21 @@
 
   <!-- Factory -->
   <script src="/scripts/factories/fact_index.js"></script>
-  <script src="/scripts/factories/fact_media.js"></script>  
-  <script src="/scripts/template/Gallery.js"></script>
+  <script src="/scripts/factories/fact_media.js"></script>
   <script src="/scripts/factories/fact_trieMedia.js"></script>
-  <script src="/scripts/factories/fact_photographer.js"></script>
+  <script src="/scripts/factories/fact_contact-modal.js"></script>
 
+  <!-- Templates -->
+  <script src="/scripts/template/filterForm.js"></script>
+  <script src="/scripts/template/lightbox.js"></script>
 
   <!-- Constructor -->
   <script src="/scripts/pages/photographer.js"></script>
 
-  <!-- Utils -->
-  <script src="/scripts/utils/contactForm.js"></script>
+
+  <!-- Script import -->
+  <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
+
 </body>
 
 </html>

@@ -46,7 +46,7 @@ class Photographer {
             <h2 class="photographer-header-city">${this.localisation}</h2>
             <p class="photographer-header-tagline">${this._tagline}</p>
         </div>
-        <button class="contact_button" aria-label="Contactez-moi">Contactez-moi</button>
+        <button class="contact_button-open" aria-label="Contactez-moi">Contactez-moi</button>
         <img src="${this.picture}" alt="Photo de profil de ${this._name}"/>
         `;
   }
