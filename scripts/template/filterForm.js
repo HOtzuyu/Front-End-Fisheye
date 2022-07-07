@@ -8,6 +8,72 @@ class FilterForm {
     this.$sectionMedia = document.querySelector("#section-media");
   }
 
+  filterByOption(mediaGallery, option) {
+    this.clearMediaGallery();
+
+    switch (option) {
+      case "popularity":
+        return mediaGallery.sort((a, b) => {
+          return b.likes - a.likes;
+        });
+      case "date":
+        return mediaGallery.sort((a, b) => {
+          return new Date(b.date) - new Date(a.date);
+        });
+      case "title":
+        return mediaGallery.sort((a, b) => a.title.localeCompare(b.title));
+      case "default":
+        return mediaGallery.sort((a, b) => {
+          return b.likes - a.likes;
+        });
+    }
+  }
+
+  openLightboxOnClick() {
+    document
+      .querySelectorAll("#section-media .gallery-med")
+      .forEach((galleryCard) => {
+        galleryCard.addEventListener("click", (e) => {
+          lightbox.show(e.currentTarget.dataset.id);
+        });
+      });
+  }
+
+  openLightboxOnKeypress() {
+    document
+      .querySelectorAll("#section-media .gallery-med")
+      .forEach((galleryCard) => {
+        galleryCard.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            lightbox.show(e.currentTarget.dataset.id);
+          }
+        });
+      });
+  }
+
+  updatedGallery(mediaGallery) {
+    mediaGallery = this.mediaGallery;
+    mediaGallery.forEach((media) => {
+      const allMedias = new MediaFactory(media);
+      $sectionMedia.innerHTML += allMedias.renderMedia();
+      this.openLightboxOnClick();
+      this.openLightboxOnKeypress();
+      photographerFooter.likeHandler();
+    });
+  }
+
+  onChangeFilter() {
+    this.$wrapper
+      .querySelector(".filter-form")
+      .addEventListener("change", (e) => {
+        const option = this.filterByOption(this.mediaGallery, e.target.value);
+        this.updatedGallery(option);
+      });
+  }
+
+  clearMediaGallery() {
+    this.$sectionMedia.innerHTML = "";
+  }
 
   render() {
     const filterForm = `
@@ -24,10 +90,8 @@ class FilterForm {
         `;
 
     this.$wrapper.innerHTML = filterForm;
-    this.$filterForm.appendChild(this.$wrapper);
-    const filterDrop = document.querySelector("#filter-form__dropdown");
-    console.log(filterDrop.value) ;
+    this.onChangeFilter();
 
-    console.log(this.mediaGallery[2].likes);
+    this.$filterForm.appendChild(this.$wrapper);
   }
 }

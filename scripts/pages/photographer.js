@@ -29,13 +29,51 @@ async function displayPhotographersPage() {
     $sectionMedia.innerHTML += allMedias.renderMedia();
   });
 
-// Filtered Gallery
-const FilteredGallery = new FilterForm(mediaGallery);
-FilteredGallery.render();
+  // Filtered Gallery
+  const FilteredGallery = new FilterForm(mediaGallery);
+  FilteredGallery.render();
+
+  // Lightbox
+  lightbox = new Lightbox(mediaGallery);
+
+  const openLightboxOnClick = () => {
+    document
+      .querySelectorAll("#section-media .gallery-med")
+      .forEach((galleryCard) => {
+        galleryCard.addEventListener("click", (e) => {
+          lightbox.show(e.currentTarget.dataset.id);
+        });
+      });
+  };
+
+  openLightboxOnClick();
+
+  const openLightboxOnKeypress = () => {
+    document
+      .querySelectorAll("#section-media .gallery-med")
+      .forEach((galleryCard) => {
+        galleryCard.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            lightbox.show(e.currentTarget.dataset.id);
+          }
+        });
+      });
+  };
+
+  openLightboxOnKeypress();
 
   // Contact Modal
   let contactModal = new ContactForm(selectedPhotographer);
   contactModal.render();
+
+  // Account Footer
+  photographerFooter = new PhotographerFooter(
+    selectedPhotographer,
+    mediaGallery
+  );
+  $photographerFooter.innerHTML += photographerFooter.renderFooter();
+  photographerFooter.likeHandler();
+
 }
 
 async function init() {

@@ -59,7 +59,7 @@ class Photo extends Media {
           <div class="gallery-wrapper">
               <a class="gallery-card" aria-label="Ouvrir la vue rapprochée de ${this._title}">
                   <div class="gallery-item">
-                      <img data-id="${this._id}" class="card-image" src="/assets/galleryPhoto/${this._photographerId}/${this._img}" alt="${this._title}" tabIndex="0"/>
+                      <img data-id="${this._id}" class="card-image gallery-med" src="/assets/galleryPhoto/${this._photographerId}/${this._img}" alt="${this._title}" tabIndex="0"/>
                   </div>
               </a>
               <div class="gallery-footer">
@@ -68,7 +68,7 @@ class Photo extends Media {
                       <p aria-label="Nombre de j'aime" class="footer-like-counter">
                           ${this._likes}
                       </p>
-                      <i class="fa-regular fa-heart heart"></i>
+                      <i class="fa-regular fa-heart heart heart-icon"></i>
                   </div>
               </div>
           </div>
@@ -87,7 +87,7 @@ class Video extends Media {
           <div class="gallery-wrapper">
               <a class="gallery-card" aria-label="Ouvrir la vue rapprochée de ${this._title}">
                 <div class="gallery-item">
-                    <video class="card-image" controls="controls" preload="metadata"  playsinline id="player">
+                    <video class="card-image gallery-med" controls="controls" preload="metadata"  playsinline id="player">
                      <source src="/assets/galleryPhoto/${this._photographerId}/${this._video}" type="video/mp4">
                     </video>                  
                 </div>
@@ -98,7 +98,7 @@ class Video extends Media {
                       <p aria-label="Nombre de j'aime" class="footer-like-counter">
                           ${this._likes} 
                       </p>
-                      <i class="fa-regular fa-heart heart"></i>
+                      <i class="fa-regular fa-heart heart heart-icon"></i>
                   </div>
               </div>
           </div>
