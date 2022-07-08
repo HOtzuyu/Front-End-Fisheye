@@ -2,10 +2,8 @@ class Lightbox {
 	constructor(listMedia) {
 		this.currentMedia = null;
 		this.listMedia = listMedia;
-
 		this.$modalWrapper = document.querySelector(".lightbox");
 	}
-
 	show(element) {
 		this.currentMedia = this.getElementById(element);
 		this.render();
@@ -13,7 +11,6 @@ class Lightbox {
 		this.focus();
 		this.manageEvents();
 	}
-
 	createLightbox() {
 		const lightbox = `
             <div class="lightbox__media" aria-label="image closeup view">                
@@ -31,20 +28,15 @@ class Lightbox {
                     </h2>
                 </div>
             </div>
-
           `;
-
 		this.$modalWrapper.innerHTML = lightbox;
 	}
-
 	render() {
 		this.createLightbox();
 	}
-
 	focus() {
 		document.querySelector(".lightbox .close").focus();
 	}
-
 	next() {
 		let index = this.listMedia.findIndex(
 			(element) => element.id == this.currentMedia.id
@@ -54,10 +46,8 @@ class Lightbox {
 		} else {
 			this.currentMedia = this.listMedia[index + 1];
 		}
-
 		this.display();
 	}
-
 	prev() {
 		let index = this.listMedia.findIndex(
 			(element) => element.id == this.currentMedia.id
@@ -67,20 +57,19 @@ class Lightbox {
 		} else {
 			this.currentMedia = this.listMedia[index - 1];
 		}
-
 		this.display();
 	}
-
 	close() {
 		document.querySelector(".lightbox").classList.add("visuallyhidden");
 	}
-
+	/**
+	 * @description navigation on the lightbox
+	 */
 	manageEvents() {
 		// Mouse Trigger
 		document.querySelector(".lightbox__next").addEventListener("click", () => {
 			this.next();
 			document.querySelector(".lightbox__content__title").innerHTML = `${this.currentMedia.title}`;
-
 		});
 		document.querySelector(".lightbox__prev").addEventListener("click", () => {
 			this.prev();
@@ -90,6 +79,9 @@ class Lightbox {
 		document.querySelector(".lightbox__close").addEventListener("click", () => {
 			this.close();
 		});
+		/**
+		 * @description use keyboard for accessibility
+		 */
 		document.querySelector(".lightbox").addEventListener("keyup", (e) => {
 			switch (e.key) {
 			case "ArrowRight":
@@ -104,16 +96,14 @@ class Lightbox {
 			}
 		});
 	}
-
 	getElementById(id) {
 		return this.listMedia.find((element) => element.id == id);
 	}
-
 	display() {
 		if (this.currentMedia.image) {
 			document.querySelector(".lightbox__picture").classList.remove("visuallyhidden");
 			document.querySelector(".lightbox__picture").alt =
-                this.currentMedia.title;
+				this.currentMedia.title;
 			document.querySelector(".lightbox__video").classList.add("visuallyhidden");
 			document.querySelector(
 				".lightbox__picture"

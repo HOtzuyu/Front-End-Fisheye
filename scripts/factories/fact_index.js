@@ -1,4 +1,12 @@
+/**
+ * @class Display all informations about all photographers
+ * @description use on theindex and photographer's page
+ */
 class Photographer {
+	/**
+	 * 
+	 * @param {data} photographer 
+	 */
 	constructor(photographer) {
 		this._name = photographer.name;
 		this._id = photographer.id;
@@ -8,19 +16,19 @@ class Photographer {
 		this._price = photographer.price;
 		this._picture = photographer.portrait;
 	}
-
 	get picture() {
 		return `../assets/photographers/${this._picture}`;
 	}
-
 	get localisation() {
 		return `${this._city}, ${this._country}`;
 	}
-
 	get price() {
 		return `${this._price}€/jour`;
 	}
-
+	/**
+	 * 
+	 * @returns {string} html photographer's introducing card || index page
+	 */
 	renderUser() {
 		return `
         <div class="photographer-wrapper">
@@ -38,7 +46,10 @@ class Photographer {
         </div>
         `;
 	}
-
+	/**
+	 * 
+	 * @returns {string} html photographer header page || photographer page
+	 */
 	renderHeader() {
 		return `
         <div class="photograph-header-info">

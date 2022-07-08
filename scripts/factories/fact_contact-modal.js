@@ -1,15 +1,27 @@
+/**
+ * @class create the contact form in photographer page
+ * @description use on the photographer's page
+ */
 class ContactForm {
+	/** 
+	 * @param {json} photographer 
+	 */
 	constructor(photographer) {
 		this.photographer = photographer;
 	}
-
+	/**
+	 * @return {function} return all functions for creat the form
+	 */
 	render() {
 		this.createModal();
 		this.displayModal();
 		this.closeModal();
 		this.formValidation();
 	}
-
+	/**
+	 * 
+	 * @returns {string} add the form in the HTML
+	 */
 	createModal() {
 		const $modalWrapper = document.querySelector("#contact_modal");
 		const modal = `
@@ -48,8 +60,9 @@ class ContactForm {
 		$modalWrapper.innerHTML = modal;
 		return $modalWrapper;
 	}
-
-	// Open Modal
+	/**
+	 * @description display modal on click of the button contact 
+	 */
 	displayModal() {
 		const contactBtn = document.querySelector(".contact_button-open");
 		contactBtn.addEventListener("click", () => {
@@ -60,8 +73,9 @@ class ContactForm {
 			modal.classList.add("center");
 		});
 	}
-
-	// Close Modal
+	/**
+	 * @description close modal on click of the cross
+	 */
 	closeModal() {
 		const closeBtn = document.querySelector(".close");
 		closeBtn.addEventListener("click", () => {
@@ -70,15 +84,23 @@ class ContactForm {
 			modal.setAttribute("aria-hidden", "true");
 		});
 	}
-
-	// Form Validation
+	/**
+	 * @description check all the form's fields
+	 */
 	formValidation() {
 		const submitBtn = document.querySelector(".contact_button");
 		submitBtn.addEventListener("click", (e) => {
+			/**
+			 * @param {string} inputs.value
+			 * @param {string} message.value
+			 * @description verifie if the field is NOT empty (firstname, lastname, email and message), write in the console.log the informations and clear the for if all OK. 
+			 * Else add border for error fields.
+			 */
 			e.preventDefault();
 			let inputs = document.querySelectorAll("input");
 			let message = document.querySelector("textarea");
 			const contactForm = document.querySelector("#contactForm");
+			
 			if (inputs.value != "" && message.value != "") {
 				inputs.forEach((input) => {
 					console.log(input.value);
@@ -88,13 +110,13 @@ class ContactForm {
 				modal.classList.add("visuallyhidden");
 				modal.setAttribute("aria-hidden", "true");
 				contactForm.reset();
-			} else {
+			}else {
 				const formData = document.querySelectorAll(".formData");
 				for (var i = 0; i < formData.length; i++) {
 					console.log(formData[i].children[2].value);
-					if(formData[i].children[2].value === ""){
+					if (formData[i].children[2].value === "") {
 						formData[i].setAttribute("data-error-visible", "true");
-					}else{
+					} else {
 						formData[i].setAttribute("data-error-visible", "false");
 					}
 				}

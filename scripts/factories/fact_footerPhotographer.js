@@ -1,9 +1,15 @@
+/**
+ * @class modal bottom right for show a total of likes and photographer's price
+ * @description use on the photographer's page
+ */
 class PhotographerFooter extends Photographer {
 	constructor(photographer, media) {
 		super(photographer);
 		this._likes = media.likes;
 	}
-  
+	/**
+	 * @returns {string} html elements for display footer likes
+	 */
 	renderFooter() {
 		return `
           <div class="sticky-footer-likes">
@@ -13,7 +19,10 @@ class PhotographerFooter extends Photographer {
           <h3>${this.price}</h3>
           `;
 	}
-  
+	/**
+	 * 
+	 * @returns {number} total of likes
+	 */
 	totalLikes() {
 		const $allLikesCounter = document.querySelectorAll(".footer-like-counter");
 		let allLikes = [];
@@ -27,7 +36,9 @@ class PhotographerFooter extends Photographer {
   
 		return totalLikes;
 	}
-  
+	/**
+	 * @description check if the user like a picture and add to the total
+	 */
 	likeHandler() {
 		const $galleryFooterLikes = document.querySelectorAll(
 			".gallery-footer-like"

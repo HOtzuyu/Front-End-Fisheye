@@ -1,4 +1,12 @@
+/**
+ * @class Display all project of the photographer selected
+ * @description use on the photographer's page
+ */
 class Media {
+	/**
+	 * 
+	 * @param {data} media 
+	 */
 	constructor(media) {
 		this._id = media.id;
 		this._photographerId = media.photographerId;
@@ -9,51 +17,40 @@ class Media {
 		this._type = media.type;
 		this._img = media.image;
 		this._video = media.video;
-
 	}
-
 	get id() {
 		return this._id;
 	}
-
 	get photographerId() {
 		return this._photographerId;
 	}
-
 	get title() {
 		return this._title;
 	}
-
 	get like() {
 		return this._likes;
 	}
-
 	get date() {
 		return this._date;
 	}
-
 	get price() {
 		return this._price;
 	}
-
 	get medias() {
 		return this._img ? this._img : this._video;
 	}
-
 	template() {
 		this.renderMedia();
 	}
-
-	//console.log("toto " +medias)
-
 }
-
+/**
+ * @decription if the media is a photo, use this condition to show in the gallery html
+ */
 class Photo extends Media {
 	constructor(media) {
 		super(media);
 		this._img = media.image;
 	}
-
 	renderMedia() {
 		return `
           <div class="gallery-wrapper">
@@ -75,13 +72,14 @@ class Photo extends Media {
           `;
 	}
 }
-
+/**
+ * @decription if the media is a video, use this condition to show in the gallery html
+ */
 class Video extends Media {
 	constructor(media) {
 		super(media);
 		this._video = media.video;
 	}
-
 	renderMedia() {
 		return `
           <div class="gallery-wrapper">
@@ -104,5 +102,4 @@ class Video extends Media {
           </div>
           `;
 	}
-
 }

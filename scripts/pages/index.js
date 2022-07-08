@@ -1,3 +1,7 @@
+/**
+ * @async wait information for display all elements on the index.html
+ * @description use on the index page
+ */
 async function displayData(photographers) {
 	const photographerSection = document.querySelector(".photographer_section");
 	photographerSection.innerHTML = "";
@@ -6,7 +10,6 @@ async function displayData(photographers) {
 		photographerSection.innerHTML += photographerModel.renderUser();
 	});
 }
-
 async function init() {
 	// Récupère les datas des photographes
 	const {
@@ -14,5 +17,4 @@ async function init() {
 	} = await getPhotographers();
 	displayData(photographers);
 }
-
 init();

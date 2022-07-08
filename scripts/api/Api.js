@@ -1,3 +1,8 @@
+/**
+ * @async informations from the Json file
+ * @file  ../data/photographers.json
+ * @description the function getPhotographers is called in the .\scripts\pages\index.js and .\scripts\pages\photographer.js files
+ */
 async function getPhotographers() {
 	const photographers = fetch("../data/photographers.json")
 		.then((res) => res.json())

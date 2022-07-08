@@ -1,16 +1,17 @@
+/**
+ * @class filtered all gallery media relative to the popularity, date, title or just default
+ * @description use on the photographer's page
+ */
 class FilterForm {
 	constructor(mediaGallery) {
 		this.mediaGallery = mediaGallery;
-
 		this.$wrapper = document.createElement("div");
 		this.$wrapper.classList.add("filter-form__wrapper");
 		this.$filterForm = document.querySelector(".filter");
 		this.$sectionMedia = document.querySelector("#section-media");
 	}
-
 	filterByOption(mediaGallery, option) {
 		this.clearMediaGallery();
-
 		switch (option) {
 		case "popularity":
 			return mediaGallery.sort((a, b) => {
@@ -28,7 +29,6 @@ class FilterForm {
 			});
 		}
 	}
-
 	openLightboxOnClick() {
 		document
 			.querySelectorAll("#section-media .gallery-med")
@@ -38,7 +38,6 @@ class FilterForm {
 				});
 			});
 	}
-
 	openLightboxOnKeypress() {
 		document
 			.querySelectorAll("#section-media .gallery-med")
@@ -50,7 +49,6 @@ class FilterForm {
 				});
 			});
 	}
-
 	updatedGallery(mediaGallery) {
 		mediaGallery = this.mediaGallery;
 		mediaGallery.forEach((media) => {
@@ -61,7 +59,6 @@ class FilterForm {
 			photographerFooter.likeHandler();
 		});
 	}
-
 	onChangeFilter() {
 		this.$wrapper
 			.querySelector(".filter-form")
@@ -70,11 +67,9 @@ class FilterForm {
 				this.updatedGallery(option);
 			});
 	}
-
 	clearMediaGallery() {
 		this.$sectionMedia.innerHTML = "";
 	}
-
 	render() {
 		const filterForm = `
         <div class="filter-form" action="#">
@@ -88,10 +83,8 @@ class FilterForm {
             <span class="filter-form__arrow"></span>
         </div>
         `;
-
 		this.$wrapper.innerHTML = filterForm;
 		this.onChangeFilter();
-
 		this.$filterForm.appendChild(this.$wrapper);
 	}
 }
