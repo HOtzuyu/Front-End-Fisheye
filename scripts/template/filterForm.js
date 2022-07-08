@@ -1,82 +1,82 @@
 class FilterForm {
-  constructor(mediaGallery) {
-    this.mediaGallery = mediaGallery;
+	constructor(mediaGallery) {
+		this.mediaGallery = mediaGallery;
 
-    this.$wrapper = document.createElement("div");
-    this.$wrapper.classList.add("filter-form__wrapper");
-    this.$filterForm = document.querySelector(".filter");
-    this.$sectionMedia = document.querySelector("#section-media");
-  }
+		this.$wrapper = document.createElement("div");
+		this.$wrapper.classList.add("filter-form__wrapper");
+		this.$filterForm = document.querySelector(".filter");
+		this.$sectionMedia = document.querySelector("#section-media");
+	}
 
-  filterByOption(mediaGallery, option) {
-    this.clearMediaGallery();
+	filterByOption(mediaGallery, option) {
+		this.clearMediaGallery();
 
-    switch (option) {
-      case "popularity":
-        return mediaGallery.sort((a, b) => {
-          return b.likes - a.likes;
-        });
-      case "date":
-        return mediaGallery.sort((a, b) => {
-          return new Date(b.date) - new Date(a.date);
-        });
-      case "title":
-        return mediaGallery.sort((a, b) => a.title.localeCompare(b.title));
-      case "default":
-        return mediaGallery.sort((a, b) => {
-          return b.likes - a.likes;
-        });
-    }
-  }
+		switch (option) {
+		case "popularity":
+			return mediaGallery.sort((a, b) => {
+				return b.likes - a.likes;
+			});
+		case "date":
+			return mediaGallery.sort((a, b) => {
+				return new Date(b.date) - new Date(a.date);
+			});
+		case "title":
+			return mediaGallery.sort((a, b) => a.title.localeCompare(b.title));
+		case "default":
+			return mediaGallery.sort((a, b) => {
+				return b.likes - a.likes;
+			});
+		}
+	}
 
-  openLightboxOnClick() {
-    document
-      .querySelectorAll("#section-media .gallery-med")
-      .forEach((galleryCard) => {
-        galleryCard.addEventListener("click", (e) => {
-          lightbox.show(e.currentTarget.dataset.id);
-        });
-      });
-  }
+	openLightboxOnClick() {
+		document
+			.querySelectorAll("#section-media .gallery-med")
+			.forEach((galleryCard) => {
+				galleryCard.addEventListener("click", (e) => {
+					lightbox.show(e.currentTarget.dataset.id);
+				});
+			});
+	}
 
-  openLightboxOnKeypress() {
-    document
-      .querySelectorAll("#section-media .gallery-med")
-      .forEach((galleryCard) => {
-        galleryCard.addEventListener("keypress", (e) => {
-          if (e.key === "Enter") {
-            lightbox.show(e.currentTarget.dataset.id);
-          }
-        });
-      });
-  }
+	openLightboxOnKeypress() {
+		document
+			.querySelectorAll("#section-media .gallery-med")
+			.forEach((galleryCard) => {
+				galleryCard.addEventListener("keypress", (e) => {
+					if (e.key === "Enter") {
+						lightbox.show(e.currentTarget.dataset.id);
+					}
+				});
+			});
+	}
 
-  updatedGallery(mediaGallery) {
-    mediaGallery = this.mediaGallery;
-    mediaGallery.forEach((media) => {
-      const allMedias = new MediaFactory(media);
-      $sectionMedia.innerHTML += allMedias.renderMedia();
-      this.openLightboxOnClick();
-      this.openLightboxOnKeypress();
-      photographerFooter.likeHandler();
-    });
-  }
+	updatedGallery(mediaGallery) {
+		mediaGallery = this.mediaGallery;
+		mediaGallery.forEach((media) => {
+			const allMedias = new MediaFactory(media);
+			$sectionMedia.innerHTML += allMedias.renderMedia();
+			this.openLightboxOnClick();
+			this.openLightboxOnKeypress();
+			photographerFooter.likeHandler();
+		});
+	}
 
-  onChangeFilter() {
-    this.$wrapper
-      .querySelector(".filter-form")
-      .addEventListener("change", (e) => {
-        const option = this.filterByOption(this.mediaGallery, e.target.value);
-        this.updatedGallery(option);
-      });
-  }
+	onChangeFilter() {
+		this.$wrapper
+			.querySelector(".filter-form")
+			.addEventListener("change", (e) => {
+				const option = this.filterByOption(this.mediaGallery, e.target.value);
+				this.updatedGallery(option);
+			});
+	}
 
-  clearMediaGallery() {
-    this.$sectionMedia.innerHTML = "";
-  }
+	clearMediaGallery() {
+		this.$sectionMedia.innerHTML = "";
+	}
 
-  render() {
-    const filterForm = `
+	render() {
+		const filterForm = `
         <div class="filter-form" action="#">
             <span class="filter-form__label">Trier par</span>
             <select id="filter-form__dropdown" aria-label="Order By">
@@ -89,9 +89,9 @@ class FilterForm {
         </div>
         `;
 
-    this.$wrapper.innerHTML = filterForm;
-    this.onChangeFilter();
+		this.$wrapper.innerHTML = filterForm;
+		this.onChangeFilter();
 
-    this.$filterForm.appendChild(this.$wrapper);
-  }
+		this.$filterForm.appendChild(this.$wrapper);
+	}
 }

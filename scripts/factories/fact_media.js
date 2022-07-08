@@ -1,61 +1,61 @@
 class Media {
-    constructor(media) {
-        this._id = media.id;
-        this._photographerId = media.photographerId;
-        this._title = media.title;
-        this._likes = media.likes;
-        this._date = media.date;
-        this._price = media.price;
-        this._type = media.type;
-        this._img = media.image;
-        this._video = media.video;
+	constructor(media) {
+		this._id = media.id;
+		this._photographerId = media.photographerId;
+		this._title = media.title;
+		this._likes = media.likes;
+		this._date = media.date;
+		this._price = media.price;
+		this._type = media.type;
+		this._img = media.image;
+		this._video = media.video;
 
-    }
+	}
 
-    get id(){
-        return this._id
-    }
+	get id() {
+		return this._id;
+	}
 
-    get photographerId(){
-        return this._photographerId
-    }
+	get photographerId() {
+		return this._photographerId;
+	}
 
-    get title(){
-        return this._title
-    }
+	get title() {
+		return this._title;
+	}
 
-    get like(){
-        return this._likes
-    }
+	get like() {
+		return this._likes;
+	}
 
-    get date(){
-        return this._date
-    }
+	get date() {
+		return this._date;
+	}
 
-    get price(){
-        return this._price
-    }
+	get price() {
+		return this._price;
+	}
 
-    get medias() {
-        return this._img ? this._img : this._video
-    }
+	get medias() {
+		return this._img ? this._img : this._video;
+	}
 
-    template() {
-        this.renderMedia();
-    }
+	template() {
+		this.renderMedia();
+	}
 
-    //console.log("toto " +medias)
+	//console.log("toto " +medias)
 
 }
 
 class Photo extends Media {
-    constructor(media) {
-        super(media);
-        this._img = media.image;
-    }
+	constructor(media) {
+		super(media);
+		this._img = media.image;
+	}
 
-    renderMedia() {
-        return `
+	renderMedia() {
+		return `
           <div class="gallery-wrapper">
               <a class="gallery-card" aria-label="Ouvrir la vue rapprochée de ${this._title}">
                   <div class="gallery-item">
@@ -73,17 +73,17 @@ class Photo extends Media {
               </div>
           </div>
           `;
-    }
+	}
 }
 
 class Video extends Media {
-    constructor(media) {
-        super(media);
-        this._video = media.video;
-    }
+	constructor(media) {
+		super(media);
+		this._video = media.video;
+	}
 
-    renderMedia() {
-        return `
+	renderMedia() {
+		return `
           <div class="gallery-wrapper">
               <a class="gallery-card" aria-label="Ouvrir la vue rapprochée de ${this._title}">
                 <div class="gallery-item">
@@ -103,6 +103,6 @@ class Video extends Media {
               </div>
           </div>
           `;
-    }
-    
+	}
+
 }

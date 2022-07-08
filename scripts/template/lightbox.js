@@ -1,21 +1,21 @@
 class Lightbox {
-    constructor(listMedia) {
-        this.currentMedia = null;
-        this.listMedia = listMedia;
+	constructor(listMedia) {
+		this.currentMedia = null;
+		this.listMedia = listMedia;
 
-        this.$modalWrapper = document.querySelector(".lightbox");
-    }
+		this.$modalWrapper = document.querySelector(".lightbox");
+	}
 
-    show(element) {
-        this.currentMedia = this.getElementById(element);
-        this.render();
-        this.display();
-        this.focus();
-        this.manageEvents();
-    }
+	show(element) {
+		this.currentMedia = this.getElementById(element);
+		this.render();
+		this.display();
+		this.focus();
+		this.manageEvents();
+	}
 
-    createLightbox() {
-        const lightbox = `
+	createLightbox() {
+		const lightbox = `
             <div class="lightbox__media" aria-label="image closeup view">                
                 <button class="lightbox__close close" aria-label="Close dialog"></button>
                 <button class="lightbox__next" aria-label="Next imagee"></button>
@@ -34,107 +34,98 @@ class Lightbox {
 
           `;
 
-        this.$modalWrapper.innerHTML = lightbox;
-    }
+		this.$modalWrapper.innerHTML = lightbox;
+	}
 
-    render() {
-        this.createLightbox();
-    }
+	render() {
+		this.createLightbox();
+	}
 
-    focus() {
-        document.querySelector(".lightbox .close").focus();
-    }
+	focus() {
+		document.querySelector(".lightbox .close").focus();
+	}
 
-    next() {
-        let index = this.listMedia.findIndex(
-            (element) => element.id == this.currentMedia.id
-        );
-        if (index == this.listMedia.length - 1) {
-            this.currentMedia = this.listMedia[0];
-        } else {
-            this.currentMedia = this.listMedia[index + 1];
-        }
+	next() {
+		let index = this.listMedia.findIndex(
+			(element) => element.id == this.currentMedia.id
+		);
+		if (index == this.listMedia.length - 1) {
+			this.currentMedia = this.listMedia[0];
+		} else {
+			this.currentMedia = this.listMedia[index + 1];
+		}
 
-        this.display();
-    }
+		this.display();
+	}
 
-    prev() {
-        let index = this.listMedia.findIndex(
-            (element) => element.id == this.currentMedia.id
-        );
-        if (index == 0) {
-            this.currentMedia = this.listMedia[this.listMedia.length - 1];
-        } else {
-            this.currentMedia = this.listMedia[index - 1];
-        }
+	prev() {
+		let index = this.listMedia.findIndex(
+			(element) => element.id == this.currentMedia.id
+		);
+		if (index == 0) {
+			this.currentMedia = this.listMedia[this.listMedia.length - 1];
+		} else {
+			this.currentMedia = this.listMedia[index - 1];
+		}
 
-        this.display();
-    }
+		this.display();
+	}
 
-    close() {
-        document.querySelector(".lightbox").classList.add("visuallyhidden");
-    }
+	close() {
+		document.querySelector(".lightbox").classList.add("visuallyhidden");
+	}
 
-    manageEvents() {
-        // Mouse Trigger
-        document.querySelector(".lightbox__next").addEventListener("click", () => {
-            this.next();
-            document.querySelector(".lightbox__content__title").innerHTML = `${this.currentMedia.title}`;
+	manageEvents() {
+		// Mouse Trigger
+		document.querySelector(".lightbox__next").addEventListener("click", () => {
+			this.next();
+			document.querySelector(".lightbox__content__title").innerHTML = `${this.currentMedia.title}`;
 
-        });
-        document.querySelector(".lightbox__prev").addEventListener("click", () => {
-            this.prev();
-            document.querySelector(".lightbox__content__title").innerHTML = `${this.currentMedia.title}`;
+		});
+		document.querySelector(".lightbox__prev").addEventListener("click", () => {
+			this.prev();
+			document.querySelector(".lightbox__content__title").innerHTML = `${this.currentMedia.title}`;
 
-        });
-        document.querySelector(".lightbox__close").addEventListener("click", () => {
-            this.close();
-        });
-        // document.querySelector(".lightbox").addEventListener("click", (e) => {
-        //     if (e.target == e.currentTarget) {
-        //         this.close();
-        //     }
-        // });
-        // Keyboard Trigger
-        document.querySelector(".lightbox").addEventListener("keyup", (e) => {
-            switch (e.key) {
-                case "ArrowRight":
-                    this.next();
-                    break;
-                case "ArrowLeft":
-                    this.prev();
-                    break;
-                case "Escape":
-                    this.close();
-                    break;
-            }
-        });
-    }
+		});
+		document.querySelector(".lightbox__close").addEventListener("click", () => {
+			this.close();
+		});
+		document.querySelector(".lightbox").addEventListener("keyup", (e) => {
+			switch (e.key) {
+			case "ArrowRight":
+				this.next();
+				break;
+			case "ArrowLeft":
+				this.prev();
+				break;
+			case "Escape":
+				this.close();
+				break;
+			}
+		});
+	}
 
-    getElementById(id) {
-        return this.listMedia.find((element) => element.id == id);
-    }
+	getElementById(id) {
+		return this.listMedia.find((element) => element.id == id);
+	}
 
-    display() {
-        if (this.currentMedia.image) {
-            document.querySelector(".lightbox__picture").classList.remove("visuallyhidden");
-            document.querySelector(".lightbox__picture").alt =
+	display() {
+		if (this.currentMedia.image) {
+			document.querySelector(".lightbox__picture").classList.remove("visuallyhidden");
+			document.querySelector(".lightbox__picture").alt =
                 this.currentMedia.title;
-            document.querySelector(".lightbox__video").classList.add("visuallyhidden");
-            document.querySelector(
-                ".lightbox__picture"
-            ).src = `/assets/galleryPhoto/${this.currentMedia.photographerId}/${this.currentMedia.image}`;
-            
-        } else{
-            document.querySelector(".lightbox__video").classList.remove("visuallyhidden");
-            document.querySelector(".lightbox__picture").classList.add("visuallyhidden");
-            document.querySelector(
-                ".lightbox__video"
-            ).src = `/assets/galleryPhoto/${this.currentMedia.photographerId}/${this.currentMedia.video}`;
-        }
-
-        document.querySelector(".lightbox").classList.remove("visuallyhidden");
-        document.querySelector(".lightbox__content__title").innerHTML =
-            this.currentMedia.title;
-    }
+			document.querySelector(".lightbox__video").classList.add("visuallyhidden");
+			document.querySelector(
+				".lightbox__picture"
+			).src = `/assets/galleryPhoto/${this.currentMedia.photographerId}/${this.currentMedia.image}`;
+		} else {
+			document.querySelector(".lightbox__video").classList.remove("visuallyhidden");
+			document.querySelector(".lightbox__picture").classList.add("visuallyhidden");
+			document.querySelector(
+				".lightbox__video"
+			).src = `/assets/galleryPhoto/${this.currentMedia.photographerId}/${this.currentMedia.video}`;
+		}
+		document.querySelector(".lightbox").classList.remove("visuallyhidden");
+		document.querySelector(".lightbox__content__title").innerHTML = this.currentMedia.title;
+	}
 }

@@ -88,7 +88,7 @@ ul {
     color: #901C1C;
 }
 
-..gallery-footer>* {
+.gallery-footer>* {
     line-height: 31.25px;
 }
 
@@ -572,25 +572,22 @@ label,
 
 .filter-form__arrow::before,
 .filter-form__arrow::after {
-    --size: .4em;
     content: "";
     position: absolute;
     width: 0;
     height: 0;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.filter-form__arrow::before, .filter-form__arrow::after {
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
+}
+
+.filter-form__arrow::before{    
     border-bottom: 5px solid #fff;
     top: 40%;
 }
 
 .filter-form__arrow::after {
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
     border-top: 5px solid #fff;
     top: 60%;
 }
