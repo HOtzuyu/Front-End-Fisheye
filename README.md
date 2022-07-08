@@ -1,0 +1,1 @@
+Les erreurs de ESlint au sujet de variables et fonctions non utilisé ne sont pas à prendre en compte car les fichiers JS sont en cascade dans le fichier HTML
