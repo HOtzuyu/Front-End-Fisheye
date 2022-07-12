@@ -56,7 +56,7 @@ class Photo extends Media {
           <div class="gallery-wrapper">
               <a class="gallery-card" aria-label="Ouvrir la vue rapprochée de ${this._title}">
                   <div class="gallery-item">
-                      <img data-id="${this._id}" class="card-image gallery-med" src="/assets/galleryPhoto/${this._photographerId}/${this._img}" alt="${this._title}" tabIndex="0"/>
+                      <img data-id="${this._id}" class="card-image gallery-med" src="assets/galleryPhoto/${this._photographerId}/${this._img}" alt="${this._title}" tabIndex="0"/>
                   </div>
               </a>
               <div class="gallery-footer">
@@ -83,10 +83,10 @@ class Video extends Media {
 	renderMedia() {
 		return `
           <div class="gallery-wrapper">
-              <a class="gallery-card" aria-label="Ouvrir la vue rapprochée de ${this._title}">
+              <a class="gallery-card">
                 <div class="gallery-item">
                     <video class="card-image gallery-med" controls="controls" preload="metadata"  playsinline id="player">
-                     <source src="/assets/galleryPhoto/${this._photographerId}/${this._video}" type="video/mp4">
+                     <source src="assets/galleryPhoto/${this._photographerId}/${this._video}" type="video/mp4">
                     </video>                  
                 </div>
               </a>
