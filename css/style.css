@@ -16,12 +16,17 @@ a {
     text-decoration: none;
 }
 
-header {
+.header_index, .header_photographer{
     display: flex;
-    flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
     height: 90px;
+}
+.header_index{
+    flex-direction: row-reverse;
+}
+.header_photographer{
+    flex-direction: row;
 }
 
 h1 {
