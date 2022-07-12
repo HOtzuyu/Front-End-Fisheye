@@ -17,7 +17,7 @@ class Photographer {
 		this._picture = photographer.portrait;
 	}
 	get picture() {
-		return `../assets/photographers/${this._picture}`;
+		return `assets/photographers/${this._picture}`;
 	}
 	get localisation() {
 		return `${this._city}, ${this._country}`;
