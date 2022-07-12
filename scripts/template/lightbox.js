@@ -107,13 +107,13 @@ class Lightbox {
 			document.querySelector(".lightbox__video").classList.add("visuallyhidden");
 			document.querySelector(
 				".lightbox__picture"
-			).src = `/assets/galleryPhoto/${this.currentMedia.photographerId}/${this.currentMedia.image}`;
+			).src = `assets/galleryPhoto/${this.currentMedia.photographerId}/${this.currentMedia.image}`;
 		} else {
 			document.querySelector(".lightbox__video").classList.remove("visuallyhidden");
 			document.querySelector(".lightbox__picture").classList.add("visuallyhidden");
 			document.querySelector(
 				".lightbox__video"
-			).src = `/assets/galleryPhoto/${this.currentMedia.photographerId}/${this.currentMedia.video}`;
+			).src = `assets/galleryPhoto/${this.currentMedia.photographerId}/${this.currentMedia.video}`;
 		}
 		document.querySelector(".lightbox").classList.remove("visuallyhidden");
 		document.querySelector(".lightbox__content__title").innerHTML = this.currentMedia.title;
