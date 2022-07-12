@@ -8,13 +8,11 @@
   <meta name="title" content="Page d'accueil du site Fisheye" />
   <meta name="description" content="Site pour photographes indépendants." />
   <title>Fisheye, page photographe</title>
-  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <link rel="icon" type="image/png" href="assets/gallery/favicon.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
 </head>
-
 <body>
   <header class="header_photographer">
     <a href="/index.html"><img src="assets/gallery/logo.png" class="logo" alt="logo fishereye, lien vers page d'acceuil"/></a>
@@ -22,24 +20,27 @@
   <!--all elements are add by the JS sheet-->
   <main id="main">
     <!-- User Header -->
-    <section class="photograph-header"></section>
+    <div class="photograph-header"></div>
 
     <!-- Filter Form -->
     <div class="filter"></div>
 
     <!-- Media Gallery -->
-    <section id="section-media"></section>
+    <div id="section-media"></div>
 
     <!-- Lightbox -->
     <div role="dialog" class="lightbox visuallyhidden" aria-label="Vue rapprochée du média"></div>
 
     <!-- User Footer -->
-    <section id="sticky-footer"></section>
+    <div id="sticky-footer"></div>
 
     <!-- Contact Modal -->
     <div id="contact_modal" class="contact-modal bground" role="dialog"></div>
   </main>
 
+  <!-- CDN FontAwesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
   <!-- Call API -->
   <script src="/scripts/api/Api.js"></script>
 
@@ -58,9 +59,6 @@
   <!-- Constructor -->
   <script src="/scripts/pages/photographer.js"></script>
 
-
-  <!-- Script import -->
-  <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
 
 </body>
 
