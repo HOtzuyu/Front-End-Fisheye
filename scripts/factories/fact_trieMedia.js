@@ -4,10 +4,6 @@
  */
 class MediaFactory {
 	constructor(media) {
-		if (media.image) {
-			return new Photo(media);
-		} else {
-			return new Video(media);
-		}
+		return media.image ? new Photo(media) : new Video(media);
 	}
 }

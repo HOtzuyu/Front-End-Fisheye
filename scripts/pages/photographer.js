@@ -31,7 +31,6 @@ async function displayPhotographersPage() {
 		(media) => media.photographerId == photographId
 	);
 	mediaGallery.forEach((media) => {
-		//console.log(media);
 		const allMedias = new MediaFactory(media);
 		$sectionMedia.innerHTML += allMedias.renderMedia();
 	});
