@@ -34,17 +34,17 @@ class ContactForm {
                 <div class="modal-body">
                     <form id="contactForm">
                         <div class="formData">
-                            <label>Prénom</label><br>
+                            <label>Prénom*</label><br>
                             <input class="text-control" type="text" id="last" name="last" autocomplete="off"
                                 placeholder="Votre prènom"  required="required" >
                         </div>
                         <div class="formData">
-                            <label>Nom</label><br>
+                            <label>Nom*</label><br>
                             <input class="text-control" type="text" id="first" name="first" autocomplete="off"
                                 placeholder="Votre nom"  required="required" >
                         </div>
                         <div class="formData">
-                            <label>E-mail</label><br>
+                            <label>E-mail*</label><br>
                             <input class="text-control" type="email" id="email" name="email" autocomplete="off"
                                 placeholder="Votre adresse e-mail"  required="required">
                         </div>
