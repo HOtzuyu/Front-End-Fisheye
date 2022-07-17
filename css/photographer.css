@@ -176,6 +176,10 @@ ul {
     transform: rotate(-45deg);
 }
 /*****************Modal background***********************/
+
+.no-scroll{
+    overflow: hidden;
+}
 .bground {
     display: none;
     position: fixed;

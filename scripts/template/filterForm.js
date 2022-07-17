@@ -76,8 +76,11 @@ class FilterForm {
             <span class="filter-form__label">Trier par</span>
             <select id="filter-form__dropdown" aria-label="Order By">
                 <option value="default">Par défaut</option>
+				<hr>
                 <option value="popularity">Popularité</option>
+				<hr>
                 <option value="date">Date</option>
+				<hr>
                 <option value="title">Titre</option>
             </select>
             <span class="filter-form__arrow"></span>
