@@ -85,6 +85,10 @@ ul {
     justify-self: center;
 }
 
+.gallery-item:hover{
+    cursor: pointer;
+}
+
 .card-image {
     width: 100%;
     min-width: 300px;
