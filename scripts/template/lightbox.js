@@ -21,9 +21,9 @@ class Lightbox {
                     <div>
                         <img src="" alt="Vue rapprochée du media" class="lightbox__picture">
                         <video alt="Vue rapprochée du media" controls autoplay src="" class="lightbox__video"></video>
+						<h2 class="lightbox__content__title">
                     </div>
                     
-                    <h2 class="lightbox__content__title">
                         
                     </h2>
                 </div>
@@ -100,7 +100,8 @@ class Lightbox {
 		return this.listMedia.find((element) => element.id == id);
 	}
 	display() {
-		if (this.currentMedia.image) {
+		if (this.currentMedia.image){
+			console.log(this.currentMedia);
 			document.querySelector(".lightbox__picture").classList.remove("visuallyhidden");
 			document.querySelector(".lightbox__picture").alt =
 				this.currentMedia.title;
@@ -108,7 +109,7 @@ class Lightbox {
 			document.querySelector(
 				".lightbox__picture"
 			).src = `assets/galleryPhoto/${this.currentMedia.photographerId}/${this.currentMedia.image}`;
-		} else {
+		} else{
 			document.querySelector(".lightbox__video").classList.remove("visuallyhidden");
 			document.querySelector(".lightbox__picture").classList.add("visuallyhidden");
 			document.querySelector(

@@ -23,10 +23,6 @@ class FilterForm {
 			});
 		case "title":
 			return mediaGallery.sort((a, b) => a.title.localeCompare(b.title));
-		case "default":
-			return mediaGallery.sort((a, b) => {
-				return b.likes - a.likes;
-			});
 		}
 	}
 	openLightboxOnClick() {
@@ -75,8 +71,6 @@ class FilterForm {
         <div class="filter-form" action="#">
             <span class="filter-form__label">Trier par</span>
             <select id="filter-form__dropdown" aria-label="Order By">
-                <option value="default">Par défaut</option>
-				<hr>
                 <option value="popularity">Popularité</option>
 				<hr>
                 <option value="date">Date</option>

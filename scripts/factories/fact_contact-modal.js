@@ -111,6 +111,7 @@ class ContactForm {
 				const modal = document.getElementById("contact_modal");
 				modal.classList.add("visuallyhidden");
 				modal.setAttribute("aria-hidden", "true");
+				document.querySelector("body").classList.remove("no-scroll");
 				contactForm.reset();
 			} else {
 				const formData = document.querySelectorAll(".formData");

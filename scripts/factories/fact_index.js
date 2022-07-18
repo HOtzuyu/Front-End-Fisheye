@@ -34,8 +34,10 @@ class Photographer {
         <div class="photographer-wrapper">
           <a href="photographer.html?id=${this._id}" aria-label="Page de ${this._name}">
               <article class="photographer-profile">
+			  	<div class="image-fit">
                   <img src="${this.picture}" alt="Photo de profil du photographe ${this._name}">
-                  <h2>${this._name}</h2>
+				</div>
+				<h2>${this._name}</h2>
               </article>
           </a>
           <div class="photographer-infos">
@@ -58,7 +60,9 @@ class Photographer {
             <p class="photographer-header-tagline">${this._tagline}</p>
         </div>
         <button class="contact_button-open" aria-label="Contactez-moi">Contactez-moi</button>
-        <img src="${this.picture}" alt="Photo de profil de ${this._name}"/>
+        <div class="image-fit">
+			<img src="${this.picture}" alt="Photo de profil du photographe ${this._name}">
+		</div>
         `;
 	}
 }

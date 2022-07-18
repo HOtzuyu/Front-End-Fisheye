@@ -65,7 +65,7 @@ class Photo extends Media {
                       <p aria-label="Nombre de j'aime" class="footer-like-counter">
                           ${this._likes}
                       </p>
-                      <i class="fa-regular fa-heart heart heart-icon"></i>
+                      <i class="fa-regular fa-heart heart heart-icon" tabindex="0"></i>
                   </div>
               </div>
           </div>
@@ -85,7 +85,7 @@ class Video extends Media {
           <div class="gallery-wrapper">
               <a class="gallery-card">
                 <div class="gallery-item">
-                    <video class="card-image gallery-med" controls="controls" preload="metadata"  playsinline id="player">
+                    <video  data-id="${this._id}" class="card-image gallery-med" controls="controls" preload="metadata"  playsinline id="player">
                      <source src="assets/galleryPhoto/${this._photographerId}/${this._video}" type="video/mp4">
                     </video>                  
                 </div>
@@ -96,7 +96,7 @@ class Video extends Media {
                       <p aria-label="Nombre de j'aime" class="footer-like-counter">
                           ${this._likes} 
                       </p>
-                      <i class="fa-regular fa-heart heart heart-icon"></i>
+                      <i class="fa-regular fa-heart heart heart-icon" tabindex="0"></i>
                   </div>
               </div>
           </div>

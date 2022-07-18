@@ -29,11 +29,11 @@ class PhotographerFooter extends Photographer {
 		$allLikesCounter.forEach((like) => {
 			allLikes.push(parseInt(like.textContent));
 		});
-  
+
 		const totalLikes = allLikes.reduce((a, b) => {
 			return a + b;
 		});
-  
+
 		return totalLikes;
 	}
 	/**
@@ -42,21 +42,47 @@ class PhotographerFooter extends Photographer {
 	likeHandler() {
 		const $galleryFooterLikes = document.querySelectorAll(
 			".gallery-footer-like"
-		);  
+		);
 		$galleryFooterLikes.forEach((item) => {
 			item.addEventListener("click", () => {
 				const $footerLikeCounter = item.querySelector(".footer-like-counter");
 				const $heartIcon = item.querySelector(".heart-icon");
 				let likeSum = parseInt($footerLikeCounter.textContent);
-  
+
 				if ($heartIcon.classList.contains("fas")) {
 					$heartIcon.classList.remove("fas");
 					$footerLikeCounter.innerHTML = --likeSum;
 				} else {
 					$heartIcon.classList.add("fas");
 					$footerLikeCounter.innerHTML = ++likeSum;
-				}  
+				}
 				document.querySelector("h2.total-likes").innerText = this.totalLikes();
+			});
+		});
+	}
+
+	likeEnter() {
+		const $galleryFooterLikes = document.querySelectorAll(
+			".gallery-footer-like"
+		);
+		$galleryFooterLikes.forEach((item) => {
+			item.addEventListener("keyup", event => {
+				if (event.keyCode === 13) {
+					console.log("enter");		
+					const $footerLikeCounter = item.querySelector(".footer-like-counter");
+					const $heartIcon = item.querySelector(".heart-icon");
+					let likeSum = parseInt($footerLikeCounter.textContent);
+
+					if ($heartIcon.classList.contains("fas")) {
+						$heartIcon.classList.remove("fas");
+						$footerLikeCounter.innerHTML = --likeSum;
+					} else {
+						$heartIcon.classList.add("fas");
+						$footerLikeCounter.innerHTML = ++likeSum;
+					}
+					document.querySelector("h2.total-likes").innerText = this.totalLikes();
+				}
+
 			});
 		});
 	}

@@ -87,6 +87,7 @@ async function displayPhotographersPage() {
 	);
 	$photographerFooter.innerHTML += photographerFooter.renderFooter();
 	photographerFooter.likeHandler();
+	photographerFooter.likeEnter();
 }
 async function init() {
 	await displayPhotographersPage();
