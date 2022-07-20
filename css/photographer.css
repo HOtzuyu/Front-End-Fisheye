@@ -306,6 +306,8 @@ label,
 .lightbox__media {
     position: relative;
     width: 70%;
+    min-height: 90vh;
+    max-height: 90vh;
 }
 
 .lightbox__next,
@@ -352,8 +354,7 @@ label,
 
 .lightbox__picture,
 .lightbox__video {
-    max-width: 800px;
-    max-height: 880px;
+    max-height: 50vh;
     animation: lightboxIn .5s;
 }
 
@@ -364,7 +365,8 @@ label,
     justify-content: center;
     margin-left: 50px;
     margin-right: 50px;
-    min-height: 100vh;
+    min-height: 90vh;
+    max-height: 90vh;
 }
 
 .lightbox__content__title {
